@@ -9,14 +9,14 @@ import ProjectsSection from '@/Components/sections/ProjectsSection.vue'
 import SecuritySection from '@/Components/sections/SecuritySection.vue'
 import ContactSection  from '@/Components/sections/ContactSection.vue'
 
-// Props dari PortfolioController (DB)
+// Props from PortfolioController (DB)
 const props = defineProps({
     projects: Array,
     comments: Array,
     settings: Object,
 })
 
-// Scroll reveal — intersect observer sederhana
+// Scroll reveal — intersect observer 
 onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
