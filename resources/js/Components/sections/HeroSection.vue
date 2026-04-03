@@ -36,14 +36,10 @@ const vizRows = [
 </script>
 
 <template>
-    <!--
-        Hero — asymmetric grid
-        Kiri: konten, Kanan: terminal mockup
-        Beda dari referensi: layout diagonal, tidak full centered
-    -->
+    <!-- Hero — asymmetric grid -->
     <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
 
-        <!-- Ocean depth glow blobs — posisi berbeda dari referensi -->
+        <!-- Ocean depth glow blobs -->
         <div class="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
              style="background:radial-gradient(circle, rgba(0,119,182,0.18) 0%, transparent 70%)"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -62,7 +58,7 @@ const vizRows = [
                     Open to Freelance & Collaboration
                 </div>
 
-                <!-- Heading — beda: nama di atas, role di bawah sebagai typewriter -->
+                <!-- Heading -->
                 <h1 class="font-sans font-extrabold leading-[1.05] tracking-tight mb-4"
                     style="font-size: clamp(2.8rem, 6vw, 5rem)">
                     Full Stack<br>
