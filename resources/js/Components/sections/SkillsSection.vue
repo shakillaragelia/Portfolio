@@ -1,6 +1,4 @@
 <script setup>
-// Skills dikelompokkan per kategori
-// Beda dari referensi: bukan progress bar, tapi icon grid per grup
 const groups = [
     {
         label: 'Backend',
@@ -68,7 +66,7 @@ const groups = [
                 Tech <span class="text-[#00b4d8]">Stack</span>
             </h2>
 
-            <!-- Grouped grid — 2 kolom di desktop, 1 di mobile -->
+            <!-- Grouped grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div v-for="group in groups" :key="group.label"
                      class="glass-card p-5" data-reveal>
@@ -80,7 +78,7 @@ const groups = [
                         <span class="font-mono text-xs text-[#00b4d8] tracking-widest uppercase">{{ group.label }}</span>
                     </div>
 
-                    <!-- Skill tags — compact, tidak pakai progress bar -->
+                    <!-- Skill tags -->
                     <div class="flex flex-wrap gap-2">
                         <span v-for="skill in group.skills" :key="skill.name"
                               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
