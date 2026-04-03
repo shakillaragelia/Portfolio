@@ -22,6 +22,7 @@ const filtered = computed(() =>
 
 const isSecurity = (p) => p.type === 'security'
 
+// Tutup modal saat Escape
 import { onMounted, onUnmounted } from 'vue'
 function onKey(e) { if (e.key === 'Escape') selected.value = null }
 onMounted(() => window.addEventListener('keydown', onKey))
@@ -145,9 +146,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
             </div>
         </div>
 
-        <!-- ════════════════════════════════════
-             MODAL DETAIL PROJECT
-        ════════════════════════════════════ -->
+        <!-- MODAL DETAIL PROJECT -->
         <Transition name="modal">
             <div v-if="selected"
                  class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
