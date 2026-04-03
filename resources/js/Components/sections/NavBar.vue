@@ -38,6 +38,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
+    <!-- Navbar -->
     <header class="fixed top-0 inset-x-0 z-50 flex justify-center pt-4 px-4">
         <nav
             class="w-full max-w-4xl transition-all duration-300"
