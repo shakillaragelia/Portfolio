@@ -97,7 +97,7 @@ const tools = [
                                 transition-all duration-300
                                 hover:border-[rgba(255,68,102,0.25)] hover:-translate-y-0.5">
 
-                        <!-- Top accent line animasi hover -->
+                        <!-- Top accent line -->
                         <div class="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-400"
                              style="background: #ff4466"></div>
 
