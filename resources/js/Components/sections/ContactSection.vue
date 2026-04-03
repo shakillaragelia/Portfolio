@@ -7,10 +7,10 @@ const props = defineProps({
     comments: Array,
 })
 
-// Local copy comments without reload
+// Local copy comments
 const localComments = ref([...(props.comments ?? [])])
 
-// ── Contact form ──────────────────────────────
+// ─ Contact form ─
 const form       = reactive({ name: '', email: '', phone: '', message: '' })
 const sending    = ref(false)
 const sent       = ref(false)
@@ -28,37 +28,37 @@ function submitContact() {
     })
 }
 
-// ── Comment form ──────────────────────────────
-const cmt            = reactive({ name: '', message: '' })
-const avatarFile     = ref(null)
-const postingComment = ref(false)
+// // ── Comment form ──────────────────────────────
+// const cmt            = reactive({ name: '', message: '' })
+// const avatarFile     = ref(null)
+// const postingComment = ref(false)
 
-function onAvatar(e) { avatarFile.value = e.target.files[0] ?? null }
+// function onAvatar(e) { avatarFile.value = e.target.files[0] ?? null }
 
-function submitComment() {
-    postingComment.value = true
-    const data = new FormData()
-    data.append('name',    cmt.name)
-    data.append('message', cmt.message)
-    if (avatarFile.value) data.append('avatar', avatarFile.value)
+// function submitComment() {
+//     postingComment.value = true
+//     const data = new FormData()
+//     data.append('name',    cmt.name)
+//     data.append('message', cmt.message)
+//     if (avatarFile.value) data.append('avatar', avatarFile.value)
 
-    router.post('/comment', data, {
-        forceFormData: true,
-        preserveScroll: true,
-        onSuccess: () => {
-            localComments.value.unshift({
-                id:     Date.now(),
-                name:   cmt.name,
-                msg:    cmt.message,
-                date:   new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }),
-                avatar: avatarFile.value ? URL.createObjectURL(avatarFile.value) : null,
-            })
-            Object.assign(cmt, { name: '', message: '' })
-            avatarFile.value = null
-        },
-        onFinish: () => postingComment.value = false,
-    })
-}
+//     router.post('/comment', data, {
+//         forceFormData: true,
+//         preserveScroll: true,
+//         onSuccess: () => {
+//             localComments.value.unshift({
+//                 id:     Date.now(),
+//                 name:   cmt.name,
+//                 msg:    cmt.message,
+//                 date:   new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' }),
+//                 avatar: avatarFile.value ? URL.createObjectURL(avatarFile.value) : null,
+//             })
+//             Object.assign(cmt, { name: '', message: '' })
+//             avatarFile.value = null
+//         },
+//         onFinish: () => postingComment.value = false,
+//     })
+// }
 
 // WhatsApp link
 const waUrl = () => {
