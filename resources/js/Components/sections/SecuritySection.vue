@@ -31,7 +31,7 @@ const tools = [
 </script>
 
 <template>
-    <section id="security" class="py-24 relative">
+    <section id="security" class="py-16 relative">
 
         <div class="absolute top-0 inset-x-0 h-px"
              style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent)"></div>
