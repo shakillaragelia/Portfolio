@@ -37,7 +37,7 @@ const vizRows = [
 
 <template>
     <!-- Hero — asymmetric grid -->
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" class="relative min-h-screen flex items-start overflow-hidden">
 
         <!-- Ocean depth glow blobs -->
         <div class="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
@@ -45,7 +45,7 @@ const vizRows = [
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
              style="background:radial-gradient(circle, rgba(2,62,138,0.14) 0%, transparent 70%)"></div>
 
-        <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-10
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pt-24 pb-16
                     grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 items-center">
 
             <!-- ── LEFT: Content ── -->
