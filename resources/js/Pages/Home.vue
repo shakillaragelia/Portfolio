@@ -34,7 +34,6 @@ onMounted(() => {
 
         elements.forEach(el => observer.observe(el))
 
-        // Fallback timeout
         setTimeout(() => {
             document.querySelectorAll('[data-reveal]:not(.visible)').forEach(el => {
                 el.classList.add('visible')
