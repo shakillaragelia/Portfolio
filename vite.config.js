@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
-import vue from '@vitejs/plugin-vue';  // ← tambah ini
+import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
@@ -10,11 +10,11 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
-        vue(),  // ← tambah ini
+        vue(),
     ],
     resolve: {
         alias: {
-            '@': '/resources/js',  // ← tambah ini juga biar import @ jalan
+            '@': '/resources/js',
         },
     },
     server: {
