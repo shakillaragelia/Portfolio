@@ -21,7 +21,7 @@ const groups = [
             { name: 'Inertia.js',  icon: '🟣' },
             { name: 'Tailwind CSS',icon: '🌊' },
             { name: 'HTML / CSS',  icon: '🎨' },
-            { name: 'Alpine.js',   icon: '❄️' },
+           // { name: 'Alpine.js',   icon: '❄️' },
         ],
     },
     {
@@ -33,7 +33,7 @@ const groups = [
             { name: 'SQLi / XSS', icon: '💉' },
             { name: 'Nmap',       icon: '📡' },
             { name: 'Metasploit', icon: '💀' },
-            { name: 'CTF',        icon: '🚩' },
+           // { name: 'CTF',        icon: '🚩' },
         ],
     },
     {
@@ -52,7 +52,7 @@ const groups = [
 </script>
 
 <template>
-    <section id="skills" class="py-24 relative"
+    <section id="skills" class="py-16 relative"
              style="background: linear-gradient(180deg, rgba(4,18,38,0.4) 0%, transparent 100%)">
 
         <div class="absolute top-0 inset-x-0 h-px"
