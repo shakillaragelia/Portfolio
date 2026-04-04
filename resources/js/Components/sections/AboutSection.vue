@@ -12,7 +12,7 @@ const infoCards = computed(() => [
 </script>
 
 <template>
-    <section id="about" class="py-24 relative">
+    <section id="about" class="py-16 relative">
 
         <div class="absolute top-0 inset-x-0 h-px"
              style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.25), transparent)"></div>
@@ -20,7 +20,7 @@ const infoCards = computed(() => [
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
             <div class="section-label mb-3" data-reveal>02 / About</div>
-            <h2 class="font-extrabold tracking-tight mb-16 leading-none" data-reveal
+            <h2 class="font-extrabold tracking-tight mb-10 leading-none" data-reveal
                 style="font-size: clamp(2rem, 4vw, 2.8rem)">
                 About <span class="text-[#00b4d8]">Me</span>
             </h2>
