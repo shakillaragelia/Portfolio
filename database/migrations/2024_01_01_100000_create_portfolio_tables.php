@@ -66,22 +66,22 @@ return new class extends Migration
         $now = now();
         DB::table('settings')->insert([
             // Profil
-            ['key' => 'name',          'value' => 'Your Name',            'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
+            ['key' => 'name',          'value' => 'Shakilla Ragelia',            'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
             ['key' => 'tagline',       'value' => 'Full Stack Developer & Pentester', 'type' => 'text', 'created_at' => $now, 'updated_at' => $now],
             ['key' => 'bio',           'value' => 'Passionate full-stack web developer from Indonesia, building robust apps with PHP, Laravel & Vue.js.', 'type' => 'text', 'created_at' => $now, 'updated_at' => $now],
             ['key' => 'photo',         'value' => null,                   'type' => 'image',   'created_at' => $now, 'updated_at' => $now],
             ['key' => 'cv_url',        'value' => null,                   'type' => 'file',    'created_at' => $now, 'updated_at' => $now],
             ['key' => 'location',      'value' => 'Indonesia 🇮🇩',        'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
-            ['key' => 'years_exp',     'value' => '5',                    'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
+            ['key' => 'years_exp',     'value' => '2',                    'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
             ['key' => 'available',     'value' => 'true',                 'type' => 'boolean', 'created_at' => $now, 'updated_at' => $now],
             ['key' => 'quote',         'value' => 'Security is not a product, but a process — and I build both.', 'type' => 'text', 'created_at' => $now, 'updated_at' => $now],
             // Kontak
-            ['key' => 'email',         'value' => 'your@email.com',       'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
+            ['key' => 'email',         'value' => 'shakilla.ragelia25@gmail.com',       'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
             ['key' => 'whatsapp',      'value' => '62812xxxxxxx',         'type' => 'text',    'created_at' => $now, 'updated_at' => $now],
             ['key' => 'whatsapp_msg',  'value' => 'Halo, saya ingin berdiskusi mengenai project', 'type' => 'text', 'created_at' => $now, 'updated_at' => $now],
             // Social
-            ['key' => 'github',        'value' => 'https://github.com/yourname',    'type' => 'url', 'created_at' => $now, 'updated_at' => $now],
-            ['key' => 'linkedin',      'value' => 'https://linkedin.com/in/yourname', 'type' => 'url', 'created_at' => $now, 'updated_at' => $now],
+            ['key' => 'github',        'value' => 'https://github.com/shakillaragelia',    'type' => 'url', 'created_at' => $now, 'updated_at' => $now],
+            ['key' => 'linkedin',      'value' => 'https://linkedin.com/in/shakillaragelia/', 'type' => 'url', 'created_at' => $now, 'updated_at' => $now],
             ['key' => 'instagram',     'value' => null,                   'type' => 'url',     'created_at' => $now, 'updated_at' => $now],
             ['key' => 'hackthebox',    'value' => null,                   'type' => 'url',     'created_at' => $now, 'updated_at' => $now],
             ['key' => 'tiktok',        'value' => null,                   'type' => 'url',     'created_at' => $now, 'updated_at' => $now],
