@@ -30,7 +30,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <template>
-    <section id="projects" class="py-24 relative"
+    <section id="projects" class="py-16 relative"
              style="background: rgba(4,18,38,0.35)">
 
         <div class="absolute top-0 inset-x-0 h-px"
