@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, nextTick } from 'vue'
 import { Head } from '@inertiajs/vue3'
 import NavBar          from '@/Components/sections/NavBar.vue'
 import HeroSection     from '@/Components/sections/HeroSection.vue'
@@ -9,24 +9,38 @@ import ProjectsSection from '@/Components/sections/ProjectsSection.vue'
 import SecuritySection from '@/Components/sections/SecuritySection.vue'
 import ContactSection  from '@/Components/sections/ContactSection.vue'
 
-const props = defineProps({
+defineProps({
     projects: Array,
     comments: Array,
     settings: Object,
 })
 
-// Scroll reveal 
 onMounted(() => {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 80)
-                observer.unobserve(entry.target)
-            }
-        })
-    }, { threshold: 0.08 })
+    nextTick(() => {
+        const elements = document.querySelectorAll('[data-reveal]')
 
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el))
+        if (elements.length === 0) {
+            return
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80)
+                    observer.unobserve(entry.target)
+                }
+            })
+        }, { threshold: 0.05 }) 
+
+        elements.forEach(el => observer.observe(el))
+
+        // Fallback timeout
+        setTimeout(() => {
+            document.querySelectorAll('[data-reveal]:not(.visible)').forEach(el => {
+                el.classList.add('visible')
+            })
+        }, 500)
+    })
 })
 </script>
 
@@ -46,8 +60,8 @@ onMounted(() => {
         </main>
 
         <footer class="border-t border-[rgba(0,180,216,0.1)] py-8 text-center">
-            <p class="font-mono text-xs text-[#0a2347] tracking-widest">
-                © {{ new Date().getFullYear() }} {{ settings?.name ?? 'YourName' }}
+            <p class="font-mono text-xs text-[#7ab8cc] tracking-widest opacity-40">
+                © {{ new Date().getFullYear() }} {{ settings?.name ?? 'Raxxel' }}
                 &nbsp;·&nbsp; Built with Laravel + Vue.js
             </p>
         </footer>
