@@ -10,7 +10,7 @@ const props = defineProps({
 // Local copy comments
 const localComments = ref([...(props.comments ?? [])])
 
-// Contact form  
+//Contact form  
 const form    = reactive({ name: '', email: '', phone: '', message: '' })
 const sending = ref(false)
 const sent    = ref(false)
@@ -28,7 +28,7 @@ function submitContact() {
     })
 }
 
-// Comment form 
+//Comment form   
 const cmt            = reactive({ name: '', message: '' })
 const avatarFile     = ref(null)
 const postingComment = ref(false)
@@ -60,14 +60,14 @@ function submitComment() {
     })
 }
 
-// WhatsApp link 
+//WhatsApp link 
 const waUrl = () => {
     const num = props.settings?.whatsapp ?? ''
     const msg = encodeURIComponent(props.settings?.whatsapp_msg ?? 'Halo!')
     return `https://wa.me/${num}?text=${msg}`
 }
 
-// ── Socials — pindah ke Composition API ──
+//Socials — pindah ke Composition API 
 const socials = computed(() => {
     const s = props.settings ?? {}
     return [
@@ -80,7 +80,7 @@ const socials = computed(() => {
 </script>
 
 <template>
-    <section id="contact" class="py-16 relative"
+    <section id="contact" class="py-24 relative"
              style="background: rgba(4,18,38,0.35)">
 
         <div class="absolute top-0 inset-x-0 h-px"
