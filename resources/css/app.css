@@ -4,8 +4,153 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.vue';
 
+/* ── FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── OCEAN DESIGN TOKENS ── */
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --color-ocean-950: #010b18;
+    --color-ocean-900: #020c1b;
+    --color-ocean-800: #041226;
+    --color-ocean-700: #071a36;
+    --color-ocean-600: #0a2347;
+    --color-ocean-500: #0e3060;
+    --color-ocean-400: #1a4a7a;
+
+    --color-wave-400: #0096c7;
+    --color-wave-300: #00b4d8;
+    --color-wave-200: #48cae4;
+    --color-wave-100: #90e0ef;
+    --color-wave-50: #caf0f8;
+}
+
+/* ── BASE ── */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #020c1b;
+    color: #caf0f8;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(rgba(0, 180, 216, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+/* ── SELECTION ── */
+::selection {
+    background: rgba(0, 180, 216, 0.25);
+    color: #caf0f8;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020c1b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 180, 216, 0.3);
+    border-radius: 2px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #00b4d8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: #00b4d8;
+}
+
+/* ── GLASS CARD ── */
+.glass-card {
+    background: rgba(4, 18, 38, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 180, 216, 0.14);
+    border-radius: 16px;
+}
+
+/* ── GLOW ── */
+.ocean-glow {
+    box-shadow: 0 0 40px rgba(0, 180, 216, 0.12);
+}
+
+/* ── BUTTONS ── */
+.btn-ocean {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.72rem 1.75rem;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    color: #010b18;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    transition: all 0.25s;
+}
+
+.btn-ocean:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 180, 216, 0.35);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.72rem 1.75rem;
+    background: transparent;
+    color: #90e0ef;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    transition: all 0.25s;
+}
+
+.btn-ghost:hover {
+    border-color: rgba(0, 180, 216, 0.6);
+    color: #caf0f8;
+    background: rgba(0, 180, 216, 0.05);
+}
+
+/* ── REVEAL ── */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+[data-reveal].visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ── WIDER CONTAINER OVERRIDE ── */
+.max-w-6xl {
+    max-width: 80rem !important;
 }

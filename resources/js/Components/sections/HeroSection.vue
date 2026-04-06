@@ -1,52 +1,175 @@
 <script setup>
-defineProps({
-    data: Object
-});
+import { ref, onMounted } from 'vue'
+
+const props = defineProps({ settings: Object })
+
+// Typewriter
+const words   = ['Developer.', 'Pentester.', 'Engineer.', 'Builder.']
+const typed   = ref('')
+let wi = 0, ci = 0, deleting = false
+
+function tick() {
+    const w = words[wi]
+    if (!deleting) {
+        typed.value = w.slice(0, ++ci)
+        if (ci === w.length) { deleting = true; setTimeout(tick, 1800); return }
+    } else {
+        typed.value = w.slice(0, --ci)
+        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length }
+    }
+    setTimeout(tick, deleting ? 55 : 85)
+}
+
+// Bar animations
+const bars = ref([0, 0, 0])
+onMounted(() => {
+    tick()
+    setTimeout(() => { bars.value = [88, 78, 72] }, 700)
+})
+
+const stacks  = ['PHP', 'Laravel', 'Filament', 'Vue.js', 'MySQL', 'Burp Suite', 'OWASP']
+const vizRows = [
+    { icon: '$_', name: 'Laravel Backend',    sub: 'REST API · Eloquent · Filament' },
+    { icon: '▷',  name: 'Vue.js Frontend',    sub: 'Composition API · Inertia.js'  },
+    { icon: '🔒', name: 'Penetration Testing',sub: 'OWASP Top 10 · Burp Suite'     },
+]
 </script>
 
 <template>
-    <section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden overflow-x-clip px-6 lg:px-8 max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-16">
-        
-        <!-- Background Glow -->
-        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-teal-500/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+    <!-- Hero — asymmetric grid -->
+    <section id="hero" class="relative min-h-screen flex items-start overflow-hidden">
 
-        <!-- Content -->
-        <div class="flex-1 text-center lg:text-left z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/50 mb-6 font-mono text-sm text-teal-300">
-                <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-                Available for New Projects
-            </div>
-            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent leading-[1.1]">
-                Hi, I'm <br class="hidden lg:block"/>
-                <span class="text-teal-400">{{ data.name }}</span>
-            </h1>
-            <p class="text-xl lg:text-2xl text-slate-400 font-medium mb-4">
-                {{ data.role }}
-            </p>
-            <p class="text-slate-500 text-lg max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-                {{ data.tagline }} <br>
-                {{ data.description }}
-            </p>
+        <!-- Ocean depth glow blobs -->
+        <div class="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+             style="background:radial-gradient(circle, rgba(0,119,182,0.18) 0%, transparent 70%)"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+             style="background:radial-gradient(circle, rgba(2,62,138,0.14) 0%, transparent 70%)"></div>
 
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                <a href="#projects" class="px-8 py-4 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(20,184,166,0.3)] hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transform hover:-translate-y-1">
-                    View My Work
-                </a>
-                <a href="#contact" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold transition-all border border-slate-700 hover:border-slate-500">
-                    Get in Touch
-                </a>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pt-24 pb-16
+                    grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 items-center">
+
+            <!-- ── LEFT: Content ── -->
+            <div data-reveal>
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+                            border border-[rgba(0,180,216,0.22)] bg-[rgba(0,180,216,0.06)]
+                            font-mono text-xs text-[#00b4d8] tracking-widest mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#00b4d8] animate-pulse"></span>
+                    Open to Freelance & Collaboration
+                </div>
+
+                <!-- Heading -->
+                <h1 class="font-sans font-extrabold leading-[1.05] tracking-tight mb-4"
+                    style="font-size: clamp(2.8rem, 6vw, 5rem)">
+                    Full Stack<br>
+                    <span class="text-[#00b4d8]">{{ typed }}</span
+                    ><span class="border-r-2 border-[#00b4d8] ml-0.5 animate-[blink_1s_step-end_infinite]"></span>
+                </h1>
+
+                <p class="text-[#7ab8cc] leading-relaxed mb-6 max-w-md"
+                   style="font-size:0.97rem">
+                    {{ settings?.bio ?? 'Passionate full-stack web developer from Indonesia. Building robust apps with PHP, Laravel & Vue.js — and hardening them with penetration testing.' }}
+                </p>
+
+                <!-- Stack pills -->
+                <div class="flex flex-wrap gap-2 mb-7">
+                    <span v-for="s in stacks" :key="s"
+                          class="px-3 py-1 rounded-full font-mono text-xs text-[#7ab8cc]
+                                 border border-[rgba(0,180,216,0.15)] bg-[rgba(0,180,216,0.04)]">
+                        {{ s }}
+                    </span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <a href="#projects" class="btn-ocean" @click.prevent="$el.closest('section').nextElementSibling?.scrollIntoView({behavior:'smooth'})">
+                        View Projects →
+                    </a>
+                    <a href="#contact" class="btn-ghost">
+                        ✉ Contact Me
+                    </a>
+                </div>
+
+                <!-- Socials -->
+                <div class="flex gap-2">
+                    <a v-if="settings?.github"    :href="settings.github"    target="_blank" class="social-pill">GH</a>
+                    <a v-if="settings?.linkedin"  :href="settings.linkedin"  target="_blank" class="social-pill">in</a>
+                    <a v-if="settings?.instagram" :href="settings.instagram" target="_blank" class="social-pill">IG</a>
+                    <a v-if="settings?.hackthebox":href="settings.hackthebox" target="_blank" class="social-pill">HTB</a>
+                </div>
             </div>
+
+            <!-- ── RIGHT: Terminal visual ── -->
+            <div class="hidden lg:block" data-reveal>
+                <div class="glass-card p-5 ocean-glow">
+                    <!-- Terminal header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex gap-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
+                        </div>
+                        <span class="font-mono text-[0.6rem] text-[#0a2347] tracking-widest">SYSTEM ONLINE</span>
+                        <span class="font-mono text-[0.6rem] text-[#00b4d8] bg-[rgba(0,180,216,0.1)] px-2 py-0.5 rounded">● ACTIVE</span>
+                    </div>
+
+                    <!-- Skill bars -->
+                    <div class="space-y-2.5 mb-4">
+                        <div v-for="(row, i) in vizRows" :key="row.name"
+                             class="bg-[rgba(0,180,216,0.04)] border border-[rgba(0,180,216,0.1)] rounded-xl p-3 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[rgba(0,180,216,0.1)] border border-[rgba(0,180,216,0.15)]
+                                        flex items-center justify-center font-mono text-[0.7rem] text-[#00b4d8] shrink-0">
+                                {{ row.icon }}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="font-semibold text-[0.8rem] text-[#caf0f8] mb-0.5">{{ row.name }}</div>
+                                <div class="font-mono text-[0.65rem] text-[#0a2347] mb-1.5">{{ row.sub }}</div>
+                                <div class="h-1 bg-[rgba(0,180,216,0.08)] rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full transition-all duration-[1200ms] ease-out"
+                                         style="background: linear-gradient(90deg, #0077b6, #00b4d8)"
+                                         :style="{ width: bars[i] + '%' }"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats row -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <div v-for="s in [['20+','Projects'],['5+','Yrs Exp'],['10+','CTF Wins']]" :key="s[1]"
+                             class="bg-[rgba(0,180,216,0.04)] border border-[rgba(0,180,216,0.1)] rounded-xl p-2.5 text-center">
+                            <div class="font-extrabold text-[#00b4d8] text-lg leading-none">{{ s[0] }}</div>
+                            <div class="font-mono text-[0.58rem] text-[#0a2347] mt-1 tracking-wide">{{ s[1] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Image -->
-        <div class="relative w-64 h-64 lg:w-96 lg:h-96 shrink-0 z-10">
-            <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <!-- Dummy Photo Box (If image doesn't exist, this box styling will look cool) -->
-            <div class="w-full h-full p-2 rounded-3xl bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm relative overflow-hidden group">
-                <img :src="data.image" alt="Avatar" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 filter grayscale group-hover:grayscale-0" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop'" />
-                <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl"></div>
-            </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5
+                    font-mono text-[0.58rem] text-[#0a2347] tracking-widest animate-bounce">
+            <div class="w-px h-8 bg-gradient-to-b from-[#00b4d8] to-transparent"></div>
+            scroll
         </div>
     </section>
 </template>
+
+<style scoped>
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.social-pill {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,180,216,0.2);
+    background: rgba(4,18,38,0.6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700;
+    color: #7ab8cc;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.social-pill:hover {
+    border-color: #00b4d8;
+    color: #00b4d8;
+}
+</style>

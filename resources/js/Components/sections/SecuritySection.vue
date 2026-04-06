@@ -1,23 +1,126 @@
 <script setup>
-defineProps({
-    interests: Array
-});
+const ctfs = [
+    {
+        badge: 'Web Exploitation',
+        title: 'SQL Injection Bypass — CTF National',
+        desc:  'Exploitasi blind SQLi pada login form dengan custom filter. Bypass via time-based injection dan automasi Python.',
+        event: 'CTF Indonesia 2024',
+        diff:  4,
+    },
+    {
+        badge: 'IDOR / Auth Bypass',
+        title: 'Broken Object Level Authorization',
+        desc:  'IDOR pada endpoint API yang memungkinkan akses data user lain hanya dengan mengganti ID parameter.',
+        event: 'Bug Bounty 2024',
+        diff:  3,
+    },
+    {
+        badge: 'XSS + CSRF Chain',
+        title: 'Stored XSS → Account Takeover',
+        desc:  'Chained Stored XSS dengan CSRF untuk account takeover. Dilaporkan via responsible disclosure.',
+        event: 'Private Program 2023',
+        diff:  5,
+    },
+]
+
+const tools = [
+    'Burp Suite', 'OWASP ZAP', 'Nmap', 'Metasploit',
+    'SQLMap', 'Nikto', 'Gobuster', 'Ffuf',
+    'Wireshark', 'Hydra', 'John the Ripper', 'Python',
+]
 </script>
 
 <template>
-    <section id="security" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-[-1]"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-            <h2 class="text-3xl lg:text-5xl font-bold mb-10 text-teal-400 drop-shadow-[0_0_15px_rgba(45,212,191,0.5)]">Cyber Security Focus</h2>
-            <div class="p-8 lg:p-12 bg-slate-950 border-2 border-slate-800 rounded-3xl shadow-[0_0_50px_rgba(20,184,166,0.1)] relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-teal-500/20 blur-3xl rounded-full"></div>
-                <div class="flex flex-col gap-6">
-                    <div v-for="(interest, i) in interests" :key="i" class="flex items-center gap-4 text-left p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-teal-500/50 transition-colors">
-                        <div class="flex-shrink-0 w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-teal-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+    <section id="security" class="py-16 relative">
+
+        <div class="absolute top-0 inset-x-0 h-px"
+             style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent)"></div>
+
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+            <div class="section-label mb-3" data-reveal>05 / Security</div>
+            <h2 class="font-extrabold tracking-tight mb-14" data-reveal
+                style="font-size: clamp(2rem, 4vw, 2.8rem)">
+                Cyber <span class="text-[#00b4d8]">Security</span>
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8">
+
+                <!-- Kiri: Terminal + tools -->
+                <div class="space-y-5" data-reveal>
+
+                    <!-- Terminal block -->
+                    <div class="glass-card p-5 font-mono text-sm leading-8">
+                        <div class="flex gap-1.5 mb-4">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></span>
                         </div>
-                        <span class="text-lg text-slate-300 font-medium">{{ interest }}</span>
+                        <div class="text-[0.8rem] space-y-1">
+                            <p><span class="text-[#00b4d8]">$</span> <span class="text-[#caf0f8]">whoami</span></p>
+                            <p class="text-[#0a2347]">&gt; penetration tester · ctf player · owasp enthusiast</p>
+                            <br>
+                            <p><span class="text-[#00b4d8]">$</span> <span class="text-[#caf0f8]">cat focus.txt</span></p>
+                            <p class="text-[#0a2347]">&gt; Web App Security · OWASP Top 10</p>
+                            <p class="text-[#0a2347]">&gt; Pentest & Bug Bounty · CTF Competition</p>
+                            <br>
+                            <p><span class="text-[#00b4d8]">$</span> <span class="text-[#caf0f8]">cat platforms.txt</span></p>
+                            <p class="text-[#0a2347]">&gt; HackTheBox · TryHackMe · CTF.id</p>
+                        </div>
+                    </div>
+
+                    <!-- Tools used -->
+                    <div class="glass-card p-5">
+                        <div class="font-mono text-xs text-[#00b4d8] tracking-widest uppercase mb-3">
+                            Tools & Arsenal
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span v-for="t in tools" :key="t"
+                                  class="font-mono text-xs px-2.5 py-1 rounded-lg
+                                         border border-[rgba(0,180,216,0.15)] bg-[rgba(0,180,216,0.04)]
+                                         text-[#7ab8cc] hover:border-[rgba(0,180,216,0.35)]
+                                         hover:text-[#caf0f8] transition-all cursor-default">
+                                {{ t }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanan: CTF writeups -->
+                <div class="space-y-4" data-reveal>
+                    <div class="font-mono text-xs text-[#0a2347] tracking-widest uppercase mb-2">
+                        CTF Writeups & Bug Bounty
+                    </div>
+
+                    <div v-for="c in ctfs" :key="c.title"
+                         class="glass-card p-5 group relative overflow-hidden
+                                transition-all duration-300
+                                hover:border-[rgba(255,68,102,0.25)] hover:-translate-y-0.5">
+
+                        <!-- Top accent line -->
+                        <div class="absolute top-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-400"
+                             style="background: #ff4466"></div>
+
+                        <!-- Badge -->
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded mb-3
+                                    border border-[rgba(255,68,102,0.2)] bg-[rgba(255,68,102,0.07)]
+                                    font-mono text-[0.6rem] text-[#ff7096] tracking-widest uppercase">
+                            {{ c.badge }}
+                        </div>
+
+                        <h3 class="font-bold text-sm text-[#caf0f8] mb-2">{{ c.title }}</h3>
+                        <p class="text-[0.8rem] text-[#0a2347] leading-relaxed mb-3">{{ c.desc }}</p>
+
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-[0.62rem] text-[#0a2347]">{{ c.event }}</span>
+                            <!-- Difficulty dots -->
+                            <div class="flex gap-1">
+                                <span v-for="n in 5" :key="n"
+                                      class="w-1.5 h-1.5 rounded-full transition-colors"
+                                      :style="n <= c.diff ? 'background:#ff4466' : 'background:rgba(0,180,216,0.15)'">
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
