@@ -22,7 +22,6 @@ const filtered = computed(() =>
 
 const isSecurity = (p) => p.type === 'security'
 
-// Tutup modal saat Escape
 import { onMounted, onUnmounted } from 'vue'
 function onKey(e) { if (e.key === 'Escape') selected.value = null }
 onMounted(() => window.addEventListener('keydown', onKey))
