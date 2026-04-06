@@ -31,12 +31,12 @@ const tools = [
 </script>
 
 <template>
-    <section id="security" class="py-16 relative">
+    <section id="security" class="py-20 relative">
 
         <div class="absolute top-0 inset-x-0 h-px"
              style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent)"></div>
 
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="w-full px-8 lg:px-16 xl:px-24">
 
             <div class="section-label mb-3" data-reveal>05 / Security</div>
             <h2 class="font-extrabold tracking-tight mb-14" data-reveal
