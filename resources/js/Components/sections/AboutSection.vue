@@ -5,7 +5,7 @@ const props = defineProps({ settings: Object })
 
 const infoCards = computed(() => [
     { label: 'Based in',   value: props.settings?.location   ?? 'Indonesia 🇮🇩' },
-    { label: 'Experience', value: (props.settings?.years_exp ?? '2') + '+ Years' },
+    { label: 'Experience', value: (props.settings?.years_exp ?? '5') + '+ Years' },
     { label: 'Status',     value: props.settings?.available === 'true' ? '● Available' : '○ Busy', accent: true },
     { label: 'Focus',      value: 'FullStack + Security' },
 ])
@@ -65,7 +65,7 @@ const infoCards = computed(() => [
                     <div class="text-xl font-bold text-[#00b4d8] mb-1">Hello, I'm</div>
                     <div class="font-extrabold tracking-tight mb-5 leading-tight"
                          style="font-size: clamp(1.6rem, 3vw, 2.2rem)">
-                        {{ settings?.name ?? 'Shakilla Ragelia' }}
+                        {{ settings?.name ?? 'Your Name' }}
                     </div>
 
                     <p class="text-[#7ab8cc] leading-relaxed mb-4" style="font-size:0.95rem">
