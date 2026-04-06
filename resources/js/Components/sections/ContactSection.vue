@@ -7,10 +7,9 @@ const props = defineProps({
     comments: Array,
 })
 
-// Local copy comments
 const localComments = ref([...(props.comments ?? [])])
 
-//Contact form  
+// Contact form  
 const form    = reactive({ name: '', email: '', phone: '', message: '' })
 const sending = ref(false)
 const sent    = ref(false)
@@ -28,7 +27,7 @@ function submitContact() {
     })
 }
 
-//Comment form   
+// Comment form  
 const cmt            = reactive({ name: '', message: '' })
 const avatarFile     = ref(null)
 const postingComment = ref(false)
@@ -60,14 +59,14 @@ function submitComment() {
     })
 }
 
-//WhatsApp link 
+// WhatsApp link     
 const waUrl = () => {
     const num = props.settings?.whatsapp ?? ''
     const msg = encodeURIComponent(props.settings?.whatsapp_msg ?? 'Halo!')
     return `https://wa.me/${num}?text=${msg}`
 }
 
-//Socials — pindah ke Composition API 
+// Socials 
 const socials = computed(() => {
     const s = props.settings ?? {}
     return [
@@ -80,13 +79,13 @@ const socials = computed(() => {
 </script>
 
 <template>
-    <section id="contact" class="py-24 relative"
+    <section id="contact" class="py-20 relative"
              style="background: rgba(4,18,38,0.35)">
 
         <div class="absolute top-0 inset-x-0 h-px"
              style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent)"></div>
 
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="w-full px-8 lg:px-16 xl:px-24">
 
             <div class="section-label mb-3" data-reveal>06 / Contact</div>
             <h2 class="font-extrabold tracking-tight mb-3" data-reveal
