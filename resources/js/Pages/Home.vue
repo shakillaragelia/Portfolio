@@ -60,7 +60,7 @@ onMounted(() => {
 
         <footer class="border-t border-[rgba(0,180,216,0.1)] py-8 text-center">
             <p class="font-mono text-xs text-[#7ab8cc] tracking-widest opacity-40">
-                © {{ new Date().getFullYear() }} {{ settings?.name ?? 'Raxxel' }}
+                © {{ new Date().getFullYear() }} {{ settings?.name ?? 'YourName' }}
                 &nbsp;·&nbsp; Built with Laravel + Vue.js
             </p>
         </footer>
