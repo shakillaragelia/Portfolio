@@ -22,6 +22,7 @@ const filtered = computed(() =>
 
 const isSecurity = (p) => p.type === 'security'
 
+// Tutup modal saat Escape
 import { onMounted, onUnmounted } from 'vue'
 function onKey(e) { if (e.key === 'Escape') selected.value = null }
 onMounted(() => window.addEventListener('keydown', onKey))
@@ -29,13 +30,13 @@ onUnmounted(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <template>
-    <section id="projects" class="py-16 relative"
+    <section id="projects" class="py-20 relative"
              style="background: rgba(4,18,38,0.35)">
 
         <div class="absolute top-0 inset-x-0 h-px"
              style="background: linear-gradient(90deg, transparent, rgba(0,180,216,0.2), transparent)"></div>
 
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <div class="w-full px-8 lg:px-16 xl:px-24">
 
             <div class="section-label mb-3" data-reveal>04 / Projects</div>
             <h2 class="font-extrabold tracking-tight mb-3" data-reveal
