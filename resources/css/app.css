@@ -9,24 +9,10 @@
 /* ── FONTS ── */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ── OCEAN DESIGN TOKENS ── */
+/* ── OCEAN TOKENS ── */
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-
-    --color-ocean-950: #010b18;
-    --color-ocean-900: #020c1b;
-    --color-ocean-800: #041226;
-    --color-ocean-700: #071a36;
-    --color-ocean-600: #0a2347;
-    --color-ocean-500: #0e3060;
-    --color-ocean-400: #1a4a7a;
-
-    --color-wave-400: #0096c7;
-    --color-wave-300: #00b4d8;
-    --color-wave-200: #48cae4;
-    --color-wave-100: #90e0ef;
-    --color-wave-50: #caf0f8;
 }
 
 /* ── BASE ── */
@@ -43,13 +29,11 @@ body {
     background-size: 32px 32px;
 }
 
-/* ── SELECTION ── */
 ::selection {
     background: rgba(0, 180, 216, 0.25);
     color: #caf0f8;
 }
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -91,7 +75,6 @@ body {
     border-radius: 16px;
 }
 
-/* ── GLOW ── */
 .ocean-glow {
     box-shadow: 0 0 40px rgba(0, 180, 216, 0.12);
 }
@@ -138,19 +121,39 @@ body {
     background: rgba(0, 180, 216, 0.05);
 }
 
-/* ── REVEAL ── */
+/* ── REVEAL     */
 [data-reveal] {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-[data-reveal].visible {
-    opacity: 1;
-    transform: none;
+/* ── CURSOR ── */
+@media (min-width: 768px) {
+    * {
+        cursor: none !important;
+    }
 }
 
-/* ── WIDER CONTAINER OVERRIDE ── */
-.max-w-6xl {
-    max-width: 80rem !important;
+/* ── WIDE CONTAINER ── */
+section .section-inner {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+@media (max-width: 1024px) {
+    section .section-inner {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    section .section-inner {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
 }
