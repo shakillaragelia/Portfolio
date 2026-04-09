@@ -1,10 +1,8 @@
 <?php
-// app/Models/Project.php
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\AsArray;
 
 class Project extends Model
 {
@@ -17,9 +15,9 @@ class Project extends Model
     ];
 
     protected $casts = [
-        'tags'        => AsArray::class,
-        'tech_stack'  => AsArray::class,
-        'features'    => AsArray::class,
+        'tags'        => 'array',  // ← fix: pakai string 'array' bukan AsArray::class
+        'tech_stack'  => 'array',
+        'features'    => 'array',
         'is_featured' => 'boolean',
         'is_active'   => 'boolean',
     ];
