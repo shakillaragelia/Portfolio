@@ -6,32 +6,32 @@
 @source '../**/*.js';
 @source '../**/*.vue';
 
-/* ── FONTS ── */
+/* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ── OCEAN TOKENS ── */
+/*TOKENS*/
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* ── BASE ── */
+/*  BASE */
 html {
     scroll-behavior: smooth;
 }
 
 body {
     background-color: #020c1b;
-    color: #caf0f8;
+    color: #e0f4fa;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    background-image: radial-gradient(rgba(0, 180, 216, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 180, 216, 0.055) 1px, transparent 1px);
     background-size: 32px 32px;
 }
 
 ::selection {
-    background: rgba(0, 180, 216, 0.25);
-    color: #caf0f8;
+    background: rgba(0, 180, 216, 0.3);
+    color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -43,17 +43,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 180, 216, 0.3);
+    background: rgba(0, 180, 216, 0.4);
     border-radius: 2px;
 }
 
-/* ── SECTION LABEL ── */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 180, 216, 0.65);
+}
+
+/*  SECTION LABEL  */
 .section-label {
     font-family: var(--font-mono);
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #00b4d8;
+    color: #48cae4;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -64,51 +68,53 @@ body {
     display: block;
     width: 28px;
     height: 1px;
-    background: #00b4d8;
+    background: #48cae4;
 }
 
-/* ── GLASS CARD ── */
+/* GLASS CARD  */
 .glass-card {
-    background: rgba(4, 18, 38, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 180, 216, 0.14);
+    background: rgba(4, 18, 38, 0.65);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 180, 216, 0.16);
     border-radius: 16px;
 }
 
 .ocean-glow {
-    box-shadow: 0 0 40px rgba(0, 180, 216, 0.12);
+    box-shadow: 0 0 50px rgba(0, 180, 216, 0.14);
 }
 
-/* ── BUTTONS ── */
+/* BUTTONS */
 .btn-ocean {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.72rem 1.75rem;
-    background: linear-gradient(135deg, #0077b6, #00b4d8);
-    color: #010b18;
-    font-weight: 700;
-    font-size: 0.88rem;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #0096c7, #48cae4);
+    color: #020c1b;
+    font-weight: 800;
+    font-size: 0.9rem;
     border-radius: 10px;
     text-decoration: none;
     border: none;
     transition: all 0.25s;
+    letter-spacing: 0.01em;
 }
 
 .btn-ocean:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 180, 216, 0.35);
+    box-shadow: 0 10px 28px rgba(72, 202, 228, 0.4);
+    background: linear-gradient(135deg, #00b4d8, #90e0ef);
 }
 
 .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.72rem 1.75rem;
-    background: transparent;
+    padding: 0.75rem 1.75rem;
+    background: rgba(0, 180, 216, 0.06);
     color: #90e0ef;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     border-radius: 10px;
     text-decoration: none;
     border: 1px solid rgba(0, 180, 216, 0.3);
@@ -116,44 +122,21 @@ body {
 }
 
 .btn-ghost:hover {
-    border-color: rgba(0, 180, 216, 0.6);
+    border-color: rgba(72, 202, 228, 0.6);
     color: #caf0f8;
-    background: rgba(0, 180, 216, 0.05);
+    background: rgba(0, 180, 216, 0.1);
+    transform: translateY(-1px);
 }
 
-/* ── REVEAL     */
+/* REVEAL — visible by default */
 [data-reveal] {
     opacity: 1;
     transform: none;
-    transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-/* ── CURSOR ── */
+/* CURSOR  */
 @media (min-width: 768px) {
     * {
         cursor: none !important;
-    }
-}
-
-/* ── WIDE CONTAINER ── */
-section .section-inner {
-    width: 100%;
-    max-width: 1380px;
-    margin: 0 auto;
-    padding-left: 4rem;
-    padding-right: 4rem;
-}
-
-@media (max-width: 1024px) {
-    section .section-inner {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    section .section-inner {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
     }
 }
