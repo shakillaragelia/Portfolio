@@ -34,7 +34,8 @@ const vizRows = [
 </script>
 
 <template>
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+   <section id="hero" class="relative min-h-screen flex items-start overflow-hidden">
+
 
         <!-- Background glows -->
         <div class="absolute top-0 left-0 w-[700px] h-[700px] rounded-full pointer-events-none"
