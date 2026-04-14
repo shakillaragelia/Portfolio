@@ -8,11 +8,10 @@ const activeSection = ref('hero')
 const menuOpen      = ref(false)
 
 const links = [
-    { id: 'hero',     label: 'Home'     },
-    { id: 'about',    label: 'About'    },
-    { id: 'skills',   label: 'Skills'   },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact',  label: 'Contact'  },
+    { id: 'hero',      label: 'Home'      },
+    { id: 'about',     label: 'About'     },
+    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'contact',   label: 'Contact'   },
 ]
 
 function scrollTo(id) {
@@ -33,24 +32,21 @@ function onScroll() {
 
 // Custom cursor
 let cx = 0, cy = 0, rx = 0, ry = 0, animId = null
-
 function onMouseMove(e) { cx = e.clientX; cy = e.clientY }
-
 function onMouseOver(e) {
     const dot  = document.getElementById('c-dot')
     const ring = document.getElementById('c-ring')
     if (!dot || !ring) return
     if (e.target.closest('a,button,[data-cursor-hover]')) {
-        ring.style.width  = '48px'; ring.style.height = '48px'
+        ring.style.width = '48px'; ring.style.height = '48px'
         ring.style.borderColor = 'rgba(72,202,228,0.7)'
         dot.style.transform = 'translate(-50%,-50%) scale(0.3)'
     } else {
-        ring.style.width  = '30px'; ring.style.height = '30px'
+        ring.style.width = '30px'; ring.style.height = '30px'
         ring.style.borderColor = 'rgba(0,180,216,0.4)'
         dot.style.transform = 'translate(-50%,-50%) scale(1)'
     }
 }
-
 function animateCursor() {
     const dot  = document.getElementById('c-dot')
     const ring = document.getElementById('c-ring')
@@ -66,7 +62,6 @@ onMounted(() => {
     window.addEventListener('mouseover', onMouseOver)
     animId = requestAnimationFrame(animateCursor)
 })
-
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll)
     window.removeEventListener('mousemove', onMouseMove)
@@ -77,11 +72,9 @@ onUnmounted(() => {
 
 <template>
     <!-- Custom Cursor -->
-    <div id="c-dot"
-         class="fixed w-2 h-2 rounded-full bg-[#48cae4] pointer-events-none z-[9999] hidden md:block"
+    <div id="c-dot" class="fixed w-2 h-2 rounded-full bg-[#48cae4] pointer-events-none z-[9999] hidden md:block"
          style="transform:translate(-50%,-50%); transition:transform 0.15s"></div>
-    <div id="c-ring"
-         class="fixed rounded-full border border-[rgba(0,180,216,0.4)] pointer-events-none z-[9998] hidden md:block"
+    <div id="c-ring" class="fixed rounded-full border border-[rgba(0,180,216,0.4)] pointer-events-none z-[9998] hidden md:block"
          style="width:30px;height:30px;transform:translate(-50%,-50%);transition:width 0.15s,height 0.15s,border-color 0.2s"></div>
 
     <header class="fixed top-0 inset-x-0 z-50 px-6 lg:px-10 pt-4">
@@ -91,7 +84,6 @@ onUnmounted(() => {
                 : 'px-2 py-3'">
             <div class="flex items-center justify-between">
 
-                <!-- Logo -->
                 <a href="#hero" class="font-mono text-sm font-semibold text-[#48cae4] tracking-wide"
                    @click.prevent="scrollTo('hero')">
                     <span style="color:rgba(72,202,228,0.4)">&lt;</span>
@@ -99,7 +91,6 @@ onUnmounted(() => {
                     <span style="color:rgba(72,202,228,0.4)">/&gt;</span>
                 </a>
 
-                <!-- Desktop links -->
                 <ul class="hidden md:flex items-center gap-1">
                     <li v-for="link in links" :key="link.id">
                         <a :href="'#' + link.id"
@@ -113,23 +104,19 @@ onUnmounted(() => {
                     </li>
                 </ul>
 
-                <!-- CTA -->
                 <a href="#contact"
                    class="hidden md:inline-flex px-4 py-1.5 rounded-lg
-                          border border-[rgba(0,180,216,0.35)] font-mono text-xs text-[#48cae4] tracking-wide
-                          hover:bg-[#48cae4] hover:text-[#020c1b] hover:border-[#48cae4]
-                          transition-all duration-200 font-semibold"
+                          border border-[rgba(0,180,216,0.35)] font-mono text-xs text-[#48cae4] tracking-wide font-semibold
+                          hover:bg-[#48cae4] hover:text-[#020c1b] hover:border-[#48cae4] transition-all duration-200"
                    @click.prevent="scrollTo('contact')">
                     Let's Talk
                 </a>
 
-                <!-- Hamburger -->
                 <button class="md:hidden flex flex-col gap-1.5 p-1" @click="menuOpen = !menuOpen">
                     <span v-for="i in 3" :key="i" class="block w-5 h-0.5 bg-[#90e0ef] rounded"></span>
                 </button>
             </div>
 
-            <!-- Mobile menu -->
             <div v-show="menuOpen" class="md:hidden pt-3 mt-3 border-t border-[rgba(0,180,216,0.1)] flex flex-col gap-1">
                 <a v-for="link in links" :key="link.id" :href="'#' + link.id"
                    class="px-3 py-2 rounded-lg font-mono text-xs tracking-widest uppercase text-[#90e0ef] hover:text-white"
