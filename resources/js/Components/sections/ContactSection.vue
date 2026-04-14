@@ -54,7 +54,7 @@ const socials = computed(() => {
 
             <!-- Header -->
             <div class="mb-14">
-                <div class="section-label mb-3">06 / Contact</div>
+                <div class="section-label mb-3">04 / Contact</div>
                 <h2 class="font-extrabold tracking-tight text-white mb-3"
                     style="font-size: clamp(2rem, 4vw, 3rem)">
                     Hubungi <span class="text-[#00b4d8]">Saya</span>
